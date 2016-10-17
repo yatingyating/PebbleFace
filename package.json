@@ -2,36 +2,24 @@
     "author": "xbyating@gmail.com",
     "dependencies": {},
     "keywords": [],
-    "name": "timezone",
+    "name": "unveil-image-step",
     "pebble": {
-        "displayName": "timezone",
+        "displayName": "unveil-image-step",
         "enableMultiJS": true,
         "messageKeys": [],
         "projectType": "native",
         "resources": {
             "media": [
                 {
-                    "file": "images/sun",
-                    "name": "SUN",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/city",
-                    "name": "NAME",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/moon",
-                    "name": "MOON",
+                    "file": "images/static",
+                    "name": "STATIC",
                     "targetPlatforms": null,
                     "type": "bitmap"
                 }
             ]
         },
         "sdkVersion": "3",
-        "uuid": "77587292-c585-4d2d-afb4-bc88f664fd22",
+        "uuid": "3c1d26bc-4e68-4781-af31-16af0e8aecdc",
         "watchapp": {
             "watchface": false
         }
