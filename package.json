@@ -1,14 +1,12 @@
 {
-    "author": "Pebble",
+    "author": "xbyating@gmail.com",
     "dependencies": {},
     "keywords": [],
-    "name": "time-dots",
+    "name": "daily-fill-steps",
     "pebble": {
-        "displayName": "Time Dots",
-        "enableMultiJS": false,
-        "messageKeys": {
-            "dummy": 0
-        },
+        "displayName": "daily-fill-steps",
+        "enableMultiJS": true,
+        "messageKeys": [],
         "projectType": "native",
         "resources": {
             "media": []
@@ -19,7 +17,7 @@
             "basalt",
             "chalk"
         ],
-        "uuid": "751fca17-11b9-4e74-aadf-a2424f8a8454",
+        "uuid": "61166547-1a12-407a-9fa6-d6a2819ffa14",
         "watchapp": {
             "watchface": true
         }
