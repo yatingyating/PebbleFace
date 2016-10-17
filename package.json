@@ -2,9 +2,9 @@
     "author": "xbyating@gmail.com",
     "dependencies": {},
     "keywords": [],
-    "name": "daily-compare",
+    "name": "bar-counts",
     "pebble": {
-        "displayName": "daily-compare",
+        "displayName": "bar-counts",
         "enableMultiJS": true,
         "messageKeys": [],
         "projectType": "native",
@@ -12,7 +12,7 @@
             "media": []
         },
         "sdkVersion": "3",
-        "uuid": "51f43e7e-bed8-46fc-b0a7-d042ecb41105",
+        "uuid": "08ef54a2-6221-4316-b249-8c06b777679f",
         "watchapp": {
             "watchface": false
         }
