@@ -2,9 +2,9 @@
     "author": "xbyating@gmail.com",
     "dependencies": {},
     "keywords": [],
-    "name": "daily-fill-steps",
+    "name": "daily-compare",
     "pebble": {
-        "displayName": "daily-fill-steps",
+        "displayName": "daily-compare",
         "enableMultiJS": true,
         "messageKeys": [],
         "projectType": "native",
@@ -12,14 +12,9 @@
             "media": []
         },
         "sdkVersion": "3",
-        "targetPlatforms": [
-            "aplite",
-            "basalt",
-            "chalk"
-        ],
-        "uuid": "61166547-1a12-407a-9fa6-d6a2819ffa14",
+        "uuid": "51f43e7e-bed8-46fc-b0a7-d042ecb41105",
         "watchapp": {
-            "watchface": true
+            "watchface": false
         }
     },
     "version": "1.0.0"
