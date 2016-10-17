@@ -11,12 +11,20 @@ static GPath *s_minute_arrow, *s_hour_arrow;
 
 static void bg_update_proc(Layer *layer, GContext *ctx) {
   GRect bounds = layer_get_bounds(layer);
-  GRect frame;
-  graphics_context_set_fill_color(ctx, GColorWhite);
-  graphics_fill_rect(ctx, bounds, 0, GCornerNone);
+  GRect frame = grect_inset(bounds, GEdgeInsets(8));
+  graphics_context_set_fill_color(ctx, GColorBabyBlueEyes);
+  graphics_fill_rect(ctx, layer_get_bounds(layer), 0, GCornerNone);
   
+  // hour dots
+  for (int i=0; i<12; i++){
+    int hour_angle = i * 360 / 12;
+    GRect frame = grect_inset(bounds, GEdgeInsets(25));
+    GPoint pos = gpoint_from_polar(frame, GOvalScaleModeFitCircle, DEG_TO_TRIGANGLE(hour_angle));
+    graphics_context_set_fill_color(ctx, GColorWhite);
+    graphics_fill_circle(ctx, pos, 3);
+  }
+
   // step history
-  graphics_context_set_fill_color(ctx, GColorLightGray);
   time_t now = time(NULL);
   struct tm *t = localtime(&now);
   int sec_in_this_hour = t->tm_sec + (t->tm_min) * 60;
@@ -26,6 +34,8 @@ static void bg_update_proc(Layer *layer, GContext *ctx) {
   time_t start;
   int steps;
   HealthMinuteData minute_data[max_records];
+  graphics_context_set_fill_color(ctx, GColorDarkGray);
+
   for (int i=0; i<12; i++){
     int hour_angle = i * 30;
     if(i < hour_12h){
@@ -53,20 +63,9 @@ static void bg_update_proc(Layer *layer, GContext *ctx) {
       persist_write_int(i, steps);
       }
     }
-    float step_ratio = (float)((steps>STEP_GOAL)?STEP_GOAL:steps)/STEP_GOAL;
-    int step_radius = (int)(step_ratio*(bounds.size.h/2-6))+6;
-    int step_inset = bounds.size.h/2-step_radius;
-    frame = grect_inset(bounds, GEdgeInsets(step_inset));
-    graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, step_radius, DEG_TO_TRIGANGLE(hour_angle), DEG_TO_TRIGANGLE(hour_angle+30));
-  }
-
-  // hour dots
-  frame = grect_inset(bounds, GEdgeInsets(18));
-  for (int i=0; i<12; i++){
-    int hour_angle = i * 360 / 12;
-    GPoint pos = gpoint_from_polar(frame, GOvalScaleModeFitCircle, DEG_TO_TRIGANGLE(hour_angle));
-    graphics_context_set_fill_color(ctx, GColorVividCerulean);
-    graphics_fill_circle(ctx, pos, 3);
+    float step_angle = (float)((steps>STEP_GOAL)?STEP_GOAL:steps)/STEP_GOAL*30;
+    step_angle = (step_angle>30)?30:step_angle;
+    graphics_fill_radial(ctx, frame, GOvalScaleModeFitCircle, 5, DEG_TO_TRIGANGLE(hour_angle), DEG_TO_TRIGANGLE(hour_angle+step_angle));
   }
 }
 
@@ -78,20 +77,24 @@ static void min_update_proc(Layer *layer, GContext *ctx){
   struct tm *t = localtime(&now);
 
   // minute/hour hand
-  graphics_context_set_fill_color(ctx, GColorBlack);
-  graphics_context_set_stroke_color(ctx, GColorBlack);
+  graphics_context_set_fill_color(ctx, GColorDarkGray);
+  graphics_context_set_stroke_color(ctx, GColorDarkGray);
+  
+  gpath_rotate_to(s_hour_arrow, (TRIG_MAX_ANGLE * (((t->tm_hour % 12) * 6) + (t->tm_min / 10))) / (12 * 6));
+  gpath_draw_filled(ctx, s_hour_arrow);
+  gpath_draw_outline(ctx, s_hour_arrow);
+  
+  graphics_context_set_fill_color(ctx, GColorWhite);
+  graphics_context_set_stroke_color(ctx, GColorWhite);
   
   gpath_rotate_to(s_minute_arrow, TRIG_MAX_ANGLE * t->tm_min / 60);
   gpath_draw_filled(ctx, s_minute_arrow);
   gpath_draw_outline(ctx, s_minute_arrow);
-
-  gpath_rotate_to(s_hour_arrow, (TRIG_MAX_ANGLE * (((t->tm_hour % 12) * 6) + (t->tm_min / 10))) / (12 * 6));
-  gpath_draw_filled(ctx, s_hour_arrow);
-  gpath_draw_outline(ctx, s_hour_arrow);
     
   // ring in the middle
-  graphics_context_set_fill_color(ctx, GColorBlack);
-  graphics_fill_circle(ctx, center, 6);
+  graphics_context_set_fill_color(ctx, GColorWhite);
+  graphics_fill_circle(ctx, center, 3);
+  
 }
 
 

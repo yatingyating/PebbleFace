@@ -2,9 +2,9 @@
     "author": "xbyating@gmail.com",
     "dependencies": {},
     "keywords": [],
-    "name": "hourly-pie-step",
+    "name": "hourly-ring-steps",
     "pebble": {
-        "displayName": "hourly-pie-step",
+        "displayName": "hourly-ring-steps",
         "enableMultiJS": true,
         "messageKeys": [],
         "projectType": "native",
@@ -17,7 +17,7 @@
             "basalt",
             "chalk"
         ],
-        "uuid": "260948b4-b7c6-496c-9db5-dd65a5816b6a",
+        "uuid": "083a0164-786b-43aa-833f-1aa5b500c349",
         "watchapp": {
             "watchface": true
         }
