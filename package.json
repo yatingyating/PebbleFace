@@ -1,12 +1,14 @@
 {
-    "author": "xbyating@gmail.com",
+    "author": "Pebble",
     "dependencies": {},
     "keywords": [],
-    "name": "hourly-ring-steps",
+    "name": "time-dots",
     "pebble": {
-        "displayName": "hourly-ring-steps",
-        "enableMultiJS": true,
-        "messageKeys": [],
+        "displayName": "Time Dots",
+        "enableMultiJS": false,
+        "messageKeys": {
+            "dummy": 0
+        },
         "projectType": "native",
         "resources": {
             "media": []
@@ -17,7 +19,7 @@
             "basalt",
             "chalk"
         ],
-        "uuid": "083a0164-786b-43aa-833f-1aa5b500c349",
+        "uuid": "751fca17-11b9-4e74-aadf-a2424f8a8454",
         "watchapp": {
             "watchface": true
         }
